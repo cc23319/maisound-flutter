@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:musicbenchai/home_page.dart';
+import 'package:maisound/home_page.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -21,6 +21,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyAppState extends ChangeNotifier {
-
-}
+class MyAppState extends ChangeNotifier {}

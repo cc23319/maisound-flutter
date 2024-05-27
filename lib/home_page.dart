@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutterflow_ui/flutterflow_ui.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+export 'package:flutterflow_ui/flutterflow_ui.dart';
 
 
 
@@ -17,15 +18,17 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        FocusManager.instance.primaryFocus?.unfocus();
-      },
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        key: GlobalKey<ScaffoldState>(),
-        backgroundColor: Color(0xFF303047),
+        key: scaffoldKey,
+        backgroundColor: Color(0xFF303047), 
         body: SafeArea(
           top: true,
           child: Column(
@@ -53,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                           icon: FaIcon(
                             FontAwesomeIcons.bars,
                             color: FlutterFlowTheme.of(context).alternate,
-                            size: 40,
+                            size: 30,
                           ),
                           onPressed: () {
                             print('MenuButton pressed ...');
@@ -69,7 +72,6 @@ class _HomePageState extends State<HomePage> {
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   letterSpacing: 0,
-                                  fontSize: 15,
                                 ),
                           ),
                         ),
@@ -88,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                           icon: FaIcon(
                             FontAwesomeIcons.plus,
                             color: FlutterFlowTheme.of(context).alternate,
-                            size: 40,
+                            size: 30,
                           ),
                           onPressed: () {
                             print('MenuButton pressed ...');
@@ -104,7 +106,6 @@ class _HomePageState extends State<HomePage> {
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   letterSpacing: 0,
-                                  fontSize: 15,
                                 ),
                           ),
                         ),
@@ -123,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                           icon: Icon(
                             Icons.upload_file,
                             color: FlutterFlowTheme.of(context).alternate,
-                            size: 40,
+                            size: 30,
                           ),
                           onPressed: () {
                             print('MenuButton pressed ...');
@@ -139,7 +140,6 @@ class _HomePageState extends State<HomePage> {
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   letterSpacing: 0,
-                                  fontSize: 15,
                                 ),
                           ),
                         ),
@@ -148,11 +148,93 @@ class _HomePageState extends State<HomePage> {
                   ].divide(SizedBox(width: 106)),
                 ),
               ),
-              Column(
+              Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [],
+                children: [
+                  Container(
+                    width: MediaQuery.sizeOf(context).width,
+                    height: 10,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF090C1E),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                width: MediaQuery.sizeOf(context).width,
+                height: 238,
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 15,
+                      color: Color(0x33000000),
+                      offset: Offset(
+                        0,
+                        2,
+                      ),
+                      spreadRadius: 25,
+                    )
+                  ],
+                  gradient: LinearGradient(
+                    colors: [Color(0xFF3B3B58), Color(0xFF1F1F28)],
+                    stops: [0.5, 1],
+                    begin: AlignmentDirectional(0, -1),
+                    end: AlignmentDirectional(0, 1),
+                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(25, 0, 0, 0),
+                      child: Container(
+                        width: 320,
+                        height: 180,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF14141C),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(30),
+                            bottomRight: Radius.circular(30),
+                            topLeft: Radius.circular(30),
+                            topRight: Radius.circular(30),
+                          ),
+                        ),
+                        child: Align(
+                          alignment: AlignmentDirectional(0, -1),
+                          child: Container(
+                            width: 320,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF1D1D26),
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(0),
+                                bottomRight: Radius.circular(0),
+                                topLeft: Radius.circular(30),
+                                topRight: Radius.circular(30),
+                              ),
+                            ),
+                            child: Align(
+                              alignment: AlignmentDirectional(0, 0),
+                              child: Text(
+                                'New Project',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: Colors.white,
+                                      fontSize: 22,
+                                      letterSpacing: 0,
+                                    ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
